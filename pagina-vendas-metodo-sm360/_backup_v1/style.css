@@ -1,0 +1,300 @@
+:root {
+    --bg-dark: #0A0A0A;
+    --bg-light: #121212;
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --text-main: #FFFFFF;
+    --text-muted: #A0A0A0;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+    
+    --container-width: 1300px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ================== HERO (SPLIT ASSIMÉTRICO) ================== */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+    position: relative;
+    padding-left: max(5%, calc((100vw - var(--container-width)) / 2));
+}
+
+.hero-content {
+    padding-right: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.headline {
+    font-family: var(--font-heading);
+    font-size: clamp(80px, 8vw, 160px); 
+    line-height: 0.9;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.gold-text {
+    color: var(--gold);
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.subheadline {
+    font-size: clamp(18px, 1.5vw, 22px);
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 650px;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.25rem 3rem;
+    background: transparent;
+    color: var(--gold);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.cta-button:hover {
+    color: var(--bg-dark);
+}
+
+.cta-button:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.hero-visual {
+    height: 100vh;
+    background: var(--bg-light);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Glassmorphism Elements (Constraint) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+    transform: translateY(30px);
+}
+
+.card-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.card-subtitle {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+.glass-orb {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(10,10,10,0) 70%);
+    filter: blur(40px);
+    top: 20%;
+    right: 10%;
+    animation: floatOrb 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-30px, 50px) scale(1.1); }
+}
+
+/* ================== AUTORIDADE (SOBRE) ================== */
+.autoridade {
+    padding: 10rem 0;
+    background: var(--bg-dark);
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.autoridade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 60%;
+    height: 60%;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+    z-index: 1;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%) contrast(1.1);
+    position: relative;
+    z-index: 2;
+    transition: filter 0.5s ease;
+}
+
+.image-wrapper:hover .profile-img {
+    filter: grayscale(0%) contrast(1.1);
+}
+
+.img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg-dark) 0%, transparent 50%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Typography for Section */
+.section-tag {
+    color: var(--gold);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-tag::after {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 4vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+}
+
+.credentials {
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(212,175,55,0.3);
+}
+
+.credentials p {
+    margin-bottom: 1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+.credentials p:first-child {
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-family: var(--font-heading);
+    font-style: italic;
+}
+
+.autoridade-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text-main);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 992px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    .hero-content {
+        padding: 5rem 5%;
+    }
+    .hero-visual {
+        height: auto;
+        min-height: 50vh;
+    }
+    
+    .autoridade-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    
+    .image-wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}

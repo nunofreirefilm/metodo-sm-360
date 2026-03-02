@@ -1,0 +1,12 @@
+# Default ignored files
+node_modules/
+.netlify/
+.env
+
+# MacOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
