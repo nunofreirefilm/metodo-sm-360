@@ -279,14 +279,8 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    filter: grayscale(100%) contrast(1.1);
     position: relative;
     z-index: 2;
-    transition: filter 0.5s ease;
-}
-
-.image-wrapper:hover .profile-img {
-    filter: grayscale(0%) contrast(1.1);
 }
 
 .img-overlay {
