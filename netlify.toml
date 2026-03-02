@@ -51,3 +51,10 @@
   for = "*.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirecionar raiz para a pagina de vendas
+[[redirects]]
+  from = "/"
+  to = "/pagina-vendas-metodo-sm360/"
+  status = 301
+  force = true
